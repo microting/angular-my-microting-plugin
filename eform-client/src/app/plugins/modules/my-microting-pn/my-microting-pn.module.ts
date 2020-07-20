@@ -7,7 +7,7 @@ import {MDBRootModule} from 'angular-bootstrap-md';
 import { Papa } from 'ngx-papaparse';
 
 import {MyMicrotingLayoutComponent} from './layouts';
-import {MyMicrotingPnRouting} from './my-microting.routing';
+import {MyMicrotingPnRouting} from './my-microting-pn.routing';
 import {SharedPnModule} from '../shared/shared-pn.module';
 
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
