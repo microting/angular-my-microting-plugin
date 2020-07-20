@@ -1,0 +1,25 @@
+<subheader-pn [title]="'My microting plugin settings' | translate">
+  <div class="p-3">
+    <button mdbBtn
+      class="btn-success btn-small-height" (click)="updateSettings()" id="saveSettingsBtn">{{ 'Save' | translate }}
+    </button>
+  </div>
+</subheader-pn>
+
+<div class="container-fluid">
+  <div class="row mt-4">
+    <div class="col-md-12 col-xs-12 control-block">
+      <div class="container-fluid">
+        <div class="row mt-2">
+          <div class="col-md-2 mb-2">
+            <div class="md-form">
+              <input mdbInput type="text" id="doToken" class="form-control" [(ngModel)]="myMicrotingPnSettingsModel.digitalOceanToken">
+              <label for="doToken" >{{'Digital Ocean token '| translate}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

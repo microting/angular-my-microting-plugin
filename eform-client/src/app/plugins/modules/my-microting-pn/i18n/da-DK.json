@@ -1,0 +1,16 @@
+{
+ "Droplets": "Droplets",
+ "Fetch from Digital Ocean":"Fetch from Digital Ocean",
+ "Id":"Id",
+ "Cusotmer No":"Cusotmer No",
+ "Name":"Name",
+ "Tags":"Tags",
+ "Local IPv4":"Local IPv4",
+ "Public IPv4":"Public IPv4",
+ "IPv6":"IPv6",
+ "Upgrade":"Upgrade",
+ "Trigger":"Trigger",
+ "Backup":"Backup",
+ "Destroy":"Destroy",
+ "My microting plugin settings": "My microting plugin settings"
+}

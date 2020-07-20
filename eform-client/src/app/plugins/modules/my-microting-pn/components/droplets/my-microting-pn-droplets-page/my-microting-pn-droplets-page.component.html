@@ -1,0 +1,186 @@
+<subheader-pn [title]="'Droplets' | translate">
+  <div class="p-3">
+    <button mdbBtn class="btn-success btn-small-height mb-2"
+      mdbTooltip="{{ 'Fetch from Digital Ocean' | translate }}"
+      id="newCustomerBtn"
+      >{{ 'Fetch from Digital Ocean' | translate }}
+    </button>
+  </div>
+</subheader-pn>
+
+<div class="container-fluid">
+  <div class="row pl-1">
+    <div class="col-md-2">
+      <div class="md-form">
+        <input mdbInput
+               type="text" (input)="onSearchInputChanged($event.target.value)"
+               class="form-control input-sm" id="searchInput">
+        <label for="searchInput">{{'Search' | translate}}</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row p-1 table-responsive no-gutters">
+    <table mdbTable striped="true" hover="true" small="true" class="z-depth-1 text-center">
+      <thead>
+      <tr>
+        <th (click)="sortTable('Id', dropletsRequestModel.isSortDsc = !dropletsRequestModel.isSortDsc)">
+          <div class="d-flex align-items-center justify-content-center">
+            {{ 'Id' | translate }}
+            <i class="material-icons text-black-50" *ngIf="localPageSettings.sort != 'Id'">unfold_more</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'Id' && !dropletsRequestModel.isSortDsc">expand_less</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'Id' && dropletsRequestModel.isSortDsc">expand_more</i>
+          </div>
+        </th>
+        <th (click)="sortTable('CustomerNo', dropletsRequestModel.isSortDsc = !dropletsRequestModel.isSortDsc)">
+          <div class="d-flex align-items-center justify-content-center">
+            {{ 'Cusotmer No' | translate }}
+            <i class="material-icons text-black-50" *ngIf="localPageSettings.sort != 'CustomerNo'">unfold_more</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'CustomerNo' && !dropletsRequestModel.isSortDsc">expand_less</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'CustomerNo' && dropletsRequestModel.isSortDsc">expand_more</i>
+          </div>
+        </th>
+        <th (click)="sortTable('Name', dropletsRequestModel.isSortDsc = !dropletsRequestModel.isSortDsc)">
+          <div class="d-flex align-items-center justify-content-center">
+            {{ 'Name' | translate }}
+            <i class="material-icons text-black-50" *ngIf="localPageSettings.sort != 'Name'">unfold_more</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'Name' && !dropletsRequestModel.isSortDsc">expand_less</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'Name' && dropletsRequestModel.isSortDsc">expand_more</i>
+          </div>
+        </th>
+        <th (click)="sortTable('Tags', dropletsRequestModel.isSortDsc = !dropletsRequestModel.isSortDsc)">
+          <div class="d-flex align-items-center justify-content-center">
+            {{ 'Tags' | translate }}
+            <i class="material-icons text-black-50" *ngIf="localPageSettings.sort != 'Tags'">unfold_more</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'Tags' && !dropletsRequestModel.isSortDsc">expand_less</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'Tags' && dropletsRequestModel.isSortDsc">expand_more</i>
+          </div>
+        </th>
+        <th (click)="sortTable('LocalIpv4', dropletsRequestModel.isSortDsc = !dropletsRequestModel.isSortDsc)">
+          <div class="d-flex align-items-center justify-content-center">
+            {{ 'Local IPv4' | translate }}
+            <i class="material-icons text-black-50" *ngIf="localPageSettings.sort != 'LocalIpv4'">unfold_more</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'LocalIpv4' && !dropletsRequestModel.isSortDsc">expand_less</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'LocalIpv4' && dropletsRequestModel.isSortDsc">expand_more</i>
+          </div>
+        </th>
+        <th (click)="sortTable('PublicIpV4', dropletsRequestModel.isSortDsc = !dropletsRequestModel.isSortDsc)">
+          <div class="d-flex align-items-center justify-content-center">
+            {{ 'Public IPv4' | translate }}
+            <i class="material-icons text-black-50" *ngIf="localPageSettings.sort != 'PublicIpV4'">unfold_more</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'PublicIpV4' && !dropletsRequestModel.isSortDsc">expand_less</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'PublicIpV4' && dropletsRequestModel.isSortDsc">expand_more</i>
+          </div>
+        </th>
+        <th (click)="sortTable('IpV6', dropletsRequestModel.isSortDsc = !dropletsRequestModel.isSortDsc)">
+          <div class="d-flex align-items-center justify-content-center">
+            {{ 'IPv6' | translate }}
+            <i class="material-icons text-black-50" *ngIf="localPageSettings.sort != 'IpV6'">unfold_more</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'IpV6' && !dropletsRequestModel.isSortDsc">expand_less</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'IpV6' && dropletsRequestModel.isSortDsc">expand_more</i>
+          </div>
+        </th>
+        <th scope="col">
+          {{ 'Actions' | translate }}
+        </th>
+      </tr>
+      </thead>
+      <tbody id="mainTableBody">
+      <tr>
+        <td>
+          1
+        </td>
+        <td>
+          1
+        </td>
+        <td>
+          1
+        </td>
+        <td>
+          1
+        </td>
+        <td>
+          1
+        </td>
+        <td>
+          1
+        </td>
+        <td>
+          1
+        </td>
+        <td class="actions">
+            <a href="#">{{ 'Tags' | translate }}</a>
+            <a href="#">{{ 'Upgrade' | translate }}</a>
+            <a href="#">{{ 'Trigger' | translate }}</a>
+            <a href="#">{{ 'Backup' | translate }}</a>
+            <a href="#">{{ 'Destroy' | translate }}</a>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          1
+        </td>
+        <td>
+          1
+        </td>
+        <td>
+          1
+        </td>
+        <td>
+          1
+        </td>
+        <td>
+          1
+        </td>
+        <td>
+          1
+        </td>
+        <td>
+          1
+        </td>
+        <td class="actions">
+          <a href="#">{{ 'Tags' | translate }}</a>
+          <a href="#">{{ 'Upgrade' | translate }}</a>
+          <a href="#">{{ 'Trigger' | translate }}</a>
+          <a href="#">{{ 'Backup' | translate }}</a>
+          <a href="#">{{ 'Destroy' | translate }}</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row justify-content-between mr-2 ml-2">
+    <div class="col-md-1">
+      <page-size-pn
+        [pageSize]="localPageSettings.pageSize"
+        (onPageSizeChanged)="localPageSettings.pageSize = $event; dropletsRequestModel.pageIndex = 1;
+        updateLocalPageSettings()">
+      </page-size-pn>
+    </div>
+    <div class="col-md-4 ml-auto d-flex justify-content-end p-2">
+      <pagination-pn *ngIf="dropletsModel.total > dropletsRequestModel.pageSize"
+                     [limit]="dropletsRequestModel.pageSize"
+                     [size]="dropletsModel.total"
+                     [offset]="dropletsRequestModel.offset"
+                     (onPageChanged)="changePage($event)"></pagination-pn>
+    </div>
+  </div>
+</div>
+
+
+

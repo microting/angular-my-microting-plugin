@@ -1,0 +1,72 @@
+[
+  {
+    "Key": "MyMicroting",
+    "LocalizedValue": {
+      "da": "My Microting",
+      "en-US": "My Microting"
+    }
+  },
+  {
+    "Key": "Organizations",
+    "LocalizedValue": {
+      "da": "Organizations",
+      "en-US": "Organizations"
+    }
+  },
+  {
+    "Key": "Droplets",
+    "LocalizedValue": {
+      "da": "Droplets",
+      "en-US": "Droplets"
+    }
+  },
+  {
+    "Key": "ErrorObtainingDropletsInfo",
+    "LocalizedValue": {
+      "da": "Error obtaining droplets info",
+      "en-US": "Error obtaining droplets info"
+    }
+  },
+  {
+    "Key": "ErrorFetchingDropletsFromDO",
+    "LocalizedValue": {
+      "da": "Error fetching droplets from DO",
+      "en-US": "Error fetching droplets from DO"
+    }
+  },
+  {
+    "Key": "ErrorUpgradingDroplets",
+    "LocalizedValue": {
+      "da": "Error upgrading droplets",
+      "en-US": "Error upgrading droplets"
+    }
+  },
+  {
+    "Key": "DoTokenMissing",
+    "LocalizedValue": {
+      "da": "Digital Ocean token missing",
+      "en-US": "Digital Ocean token missing"
+    }
+  },
+  {
+    "Key": "ErrorObtainingSettingsInfo",
+    "LocalizedValue": {
+      "da": "Error obtaining settings",
+      "en-US": "Error obtaining settings"
+    }
+  },
+  {
+    "Key": "SettingsHaveBeenUpdatedSuccessfully",
+    "LocalizedValue": {
+      "da": "Settings have been updated successfully",
+      "en-US": "Settings have been updated successfully"
+    }
+  },
+  {
+    "Key": "ErrorUpdatingSettingsInfo",
+    "LocalizedValue": {
+      "da": "Error upgrading settings values",
+      "en-US": "Error upgrading settings values"
+    }
+  }
+]
