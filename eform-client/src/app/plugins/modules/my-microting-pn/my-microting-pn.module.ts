@@ -15,7 +15,7 @@ import {EformSharedModule} from 'src/app/common/modules/eform-shared/eform-share
 import { MyMicrotingPnDropletsPageComponent } from './components/droplets/my-microting-pn-droplets-page/my-microting-pn-droplets-page.component';
 import { MyMicrotingPnDropletsService, MyMicrotingPnSettingsService } from './services';
 import { MyMicrotingPnSettingsComponent } from './components/my-microting-pn-settings/my-microting-pn-settings.component';
-
+import { MyMicrotingPnCofirmModalComponent } from './components/shared/my-microting-pn-confirm-modal.component.ts/my-microting-pn-confirm-modal.component';
 
 @NgModule({
     imports: [
@@ -33,7 +33,8 @@ import { MyMicrotingPnSettingsComponent } from './components/my-microting-pn-set
   declarations: [
     MyMicrotingLayoutComponent,
     MyMicrotingPnDropletsPageComponent,
-    MyMicrotingPnSettingsComponent
+    MyMicrotingPnSettingsComponent,
+    MyMicrotingPnCofirmModalComponent
   ],
   providers: [
     MyMicrotingPnDropletsService,
