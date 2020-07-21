@@ -21,7 +21,7 @@ namespace MyMicroting.Pn.Infrastructure.Models.Droplets
         public bool IpV6Enabled { get; set; }
         public bool BackupsEnabled { get; set; }
         public Size Size { get; set; }
-        public List<DropletTag> DropletTags { get; set; }
+        public List<string> Tags { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdateAt { get; set; }
         public int CreatedByUserId { get; set; }
