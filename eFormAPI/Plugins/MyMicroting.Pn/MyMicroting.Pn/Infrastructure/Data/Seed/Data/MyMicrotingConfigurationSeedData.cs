@@ -9,7 +9,7 @@ namespace MyMicroting.Pn.Infrastructure.Data.Seed.Data
         {
             new PluginConfigurationValue()
             {
-                Name = "DigitalOceanBaseSettings:DigitalOceanToken",
+                Name = "MyMicrotingSettings:DigitalOceanToken",
                 Value = ""
             },
         };

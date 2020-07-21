@@ -55,10 +55,10 @@ namespace MyMicroting.Pn.Services
         {
             try
             {
-                await options.UpdateDb(settings =>
-                {
-                    settings.DigitalOceanToken = settingsUpdateModel.DigitalOceanToken;
-                }, dbContext, UserId);
+                await options.UpdateDb(
+                    x => { x.DigitalOceanToken = settingsUpdateModel.DigitalOceanToken; },
+                    dbContext,
+                    UserId);
 
                 return new OperationResult(true,
                     localizationService.GetString("SettingsHaveBeenUpdatedSuccessfully"));
