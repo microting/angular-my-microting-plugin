@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MyMicroting.Pn.Controllers
 {
-    //[Authorize(Roles = EformRole.Admin)]
+    [Authorize]
     public class MyMicrotingSettingsController : Controller
     {
         private readonly IMyMicrotingSettingsService myMicrotingSettingsService;

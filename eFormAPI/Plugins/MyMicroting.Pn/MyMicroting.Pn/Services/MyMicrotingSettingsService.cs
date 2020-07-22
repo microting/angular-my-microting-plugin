@@ -39,6 +39,7 @@ namespace MyMicroting.Pn.Services
                 if (pliginSettings?.DigitalOceanToken == null)
                     return new OperationDataResult<MyMicrotingSettings>(false, localizationService.GetString("DoTokenMissing"));
 
+                result.DigitalOceanToken = pliginSettings.DigitalOceanToken;
                 return new OperationDataResult<MyMicrotingSettings>(true, result);
 
             }

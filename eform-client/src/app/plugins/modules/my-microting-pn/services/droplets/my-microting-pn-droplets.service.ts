@@ -21,4 +21,12 @@ export class MyMicrotingPnDropletsService extends BaseService {
   getDroplets(model: MyMicrotingPnDropletsRequestModel): Observable<OperationDataResult<MyMicrotingPnDropletsModel>> {
     return this.get(MyMicrotingPnDropletsMethods.getDroplets, model);
   }
+
+  fetchDropletsFromDo(model: MyMicrotingPnDropletsRequestModel): Observable<OperationDataResult<MyMicrotingPnDropletsModel>> {
+    return this.get(MyMicrotingPnDropletsMethods.getDroplets + '/fetch', model);
+  }
+
+  upgrade(dropletId: number, imageId: number, model: MyMicrotingPnDropletsRequestModel): Observable<OperationDataResult<MyMicrotingPnDropletsModel>> {
+    return this.get(MyMicrotingPnDropletsMethods.getDroplets + '/upgrade/' + dropletId + '/' + imageId, model);
+  }
 }
