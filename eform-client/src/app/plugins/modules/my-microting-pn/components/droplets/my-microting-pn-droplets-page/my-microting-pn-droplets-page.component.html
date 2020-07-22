@@ -2,7 +2,7 @@
   <div class="p-3">
     <button mdbBtn class="btn-success btn-small-height mb-2"
       mdbTooltip="{{ 'Fetch from Digital Ocean' | translate }}"
-      id="newCustomerBtn"
+      (click)="showFetchModal()"
       >{{ 'Fetch from Digital Ocean' | translate }}
     </button>
   </div>
@@ -100,64 +100,34 @@
       </tr>
       </thead>
       <tbody id="mainTableBody">
-      <tr>
+      <tr *ngFor="let droplet of dropletsModel.droplets; let i = index">
         <td>
-          1
+          {{droplet.DoUid}}
         </td>
         <td>
-          1
+          {{droplet.CustomerNo}}
         </td>
         <td>
-          1
+          {{droplet.Name}}
         </td>
         <td>
-          1
+          {{droplet.Tags.join(', ')}}
         </td>
         <td>
-          1
+          {{droplet.PrivateIpV4}}
         </td>
         <td>
-          1
+          {{droplet.PublicIpV4}}
         </td>
         <td>
-          1
+          {{droplet.PublicIpV6}}
         </td>
         <td class="actions">
             <a href="#">{{ 'Tags' | translate }}</a>
-            <a href="#">{{ 'Upgrade' | translate }}</a>
+            <a (click)="showUpgradeDropletModal(droplet.DoUid, droplet.CurrentImageId)" >{{ 'Upgrade' | translate }}</a>
             <a href="#">{{ 'Trigger' | translate }}</a>
             <a href="#">{{ 'Backup' | translate }}</a>
             <a href="#">{{ 'Destroy' | translate }}</a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          1
-        </td>
-        <td>
-          1
-        </td>
-        <td>
-          1
-        </td>
-        <td>
-          1
-        </td>
-        <td>
-          1
-        </td>
-        <td>
-          1
-        </td>
-        <td>
-          1
-        </td>
-        <td class="actions">
-          <a href="#">{{ 'Tags' | translate }}</a>
-          <a href="#">{{ 'Upgrade' | translate }}</a>
-          <a href="#">{{ 'Trigger' | translate }}</a>
-          <a href="#">{{ 'Backup' | translate }}</a>
-          <a href="#">{{ 'Destroy' | translate }}</a>
         </td>
       </tr>
       </tbody>
@@ -181,6 +151,8 @@
     </div>
   </div>
 </div>
+
+<app-my-microting-pn-confirm-modal #modalconfirm></app-my-microting-pn-confirm-modal>
 
 
 
