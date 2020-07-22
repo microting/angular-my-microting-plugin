@@ -4,16 +4,16 @@ GIT_STATUS=`git status | grep "nothing to commit, working tree clean" | wc -l`
 if (( "$GIT_STATUS" > 0 )); then
 	git checkout stable
 	git pull
-	cd eFormAPI/Plugins/Customers.Pn/Customers.Pn
+	cd eFormAPI/Plugins/MyMicroting.Pn/MyMicroting.Pn
 
-	dotnet add Customers.Pn.csproj package Microting.eForm
-	dotnet add Customers.Pn.csproj package Microting.eFormApi.BasePn
-	dotnet add Customers.Pn.csproj package Microting.eFormBaseCustomerBase
+	dotnet add MyMicroting.Pn.csproj package Microting.eForm
+	dotnet add MyMicroting.Pn.csproj package Microting.eFormApi.BasePn
+	dotnet add MyMicroting.Pn.csproj package Microting.DigitalOceanBase
 
 	EFORM_VERSION=`dotnet list package | grep 'Microting.eForm ' | cut -c64-71`
 	EFORM_BASEPN_VERSION=`dotnet list package | grep 'Microting.eFormApi.BasePn' | cut -c64-71`
-	EFORM_PLUGINBASE_VERSION=`dotnet list package | grep 'Microting.eFormBaseCustomerBase' | cut -c64-71`
-	COMMIT_MESSAGE="Updating"$'\n'"- Microting.eForm to ${EFORM_VERSION}"$'\n'"- Microting.eFormApi.BasePn to ${EFORM_BASEPN_VERSION}"$'\n'"- Microting.eFormBaseCustomerBase to ${EFORM_PLUGINBASE_VERSION}"
+	EFORM_PLUGINBASE_VERSION=`dotnet list package | grep 'Microting.DigitalOceanBase' | cut -c64-71`
+	COMMIT_MESSAGE="Updating"$'\n'"- Microting.eForm to ${EFORM_VERSION}"$'\n'"- Microting.eFormApi.BasePn to ${EFORM_BASEPN_VERSION}"$'\n'"- Microting.DigitalOceanBase to ${EFORM_PLUGINBASE_VERSION}"
 
 	GIT_STATUS=`git status | grep "nothing to commit, working tree clean" | wc -l`
 
@@ -30,7 +30,7 @@ if (( "$GIT_STATUS" > 0 )); then
 		NEW_GIT_VERSION="v$MAJOR_VERSION.$MINOR_VERSION.$BUILD_VERSION"
 		git tag "$NEW_GIT_VERSION"
 		git push --tags
-		git push	
+		git push
 		echo "Updated Microting eForm to ${EFORM_VERSION} and pushed new version ${NEW_GIT_VERSION}"
 	fi
 else
