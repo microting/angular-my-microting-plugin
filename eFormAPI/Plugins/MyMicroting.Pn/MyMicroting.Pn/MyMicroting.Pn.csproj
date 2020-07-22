@@ -8,6 +8,10 @@
     <OutputPath>..\..\..\eFormAPI.Web\Plugins\MyMicroting</OutputPath>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="Resources\localization.json" />
   </ItemGroup>
