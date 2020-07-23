@@ -25,18 +25,15 @@ intstall:
   - ./rabbitmqadmin declare queue name=eformsdk-input durable=true
   - ./rabbitmqadmin declare queue name=angular-my-microting-plugin durable=true
 script:
-  - dotnet restore eFormAPI/Plugins/MyMicroting.Pn/MyMicroting.Pn.sln
   - dotnet build eFormAPI/Plugins/MyMicroting.Pn/MyMicroting.Pn.sln
   - dotnet test -v n eFormAPI/Plugins/MyMicroting.Pn/MyMicroting.Pn.Test/MyMicroting.Pn.Test.csproj
   - cd ../..
   - git clone --depth=50 --branch=$TRAVIS_BRANCH https://github.com/microting/eform-angular-frontend.git microting/eform-angular-frontend
   - cp -av microting/angular-my-microting-plugin/eform-client/src/app/plugins/modules/my-microting-pn microting/eform-angular-frontend/eform-client/src/app/plugins/modules/my-microting-pn
-  - cp -av microting/angular-my-microting-plugin/eform-client/e2e/Tests/customer-settings microting/eform-angular-frontend/eform-client/e2e/Tests/customer-settings
-  - cp -av microting/angular-my-microting-plugin/eform-client/e2e/Tests/customer-general microting/eform-angular-frontend/eform-client/e2e/Tests/customer-general
-  - cp -av microting/angular-my-microting-plugin/eform-client/e2e/Assets/ microting/eform-angular-frontend/eform-client/e2e/Assets
+  - cp -av microting/angular-my-microting-plugin/eform-client/e2e/Tests/my-microting-settings microting/eform-angular-frontend/eform-client/e2e/Tests/my-microting-settings
+  - cp -av microting/angular-my-microting-plugin/eform-client/e2e/Tests/my-microting-general microting/eform-angular-frontend/eform-client/e2e/Tests/my-microting-general
   - cp -av microting/angular-my-microting-plugin/eform-client/wdio-headless-plugin-step2.conf.js microting/eform-angular-frontend/eform-client/wdio-headless-plugin-step2.conf.js
   - cd microting/eform-angular-frontend
-  - dotnet restore -v q eFormAPI/eFormAPI.sln > dotnet_log 2>&1 &
   - dotnet build eFormAPI/eFormAPI.sln > dotnet_log 2>&1 &
   - cd ../..
   - mkdir -p microting/eform-angular-frontend/eFormAPI/eFormAPI.Web/Plugins
