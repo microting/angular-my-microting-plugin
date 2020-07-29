@@ -13,9 +13,11 @@ import {SharedPnModule} from '../shared/shared-pn.module';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {EformSharedModule} from 'src/app/common/modules/eform-shared/eform-shared.module';
 import { MyMicrotingPnDropletsPageComponent } from './components/droplets/my-microting-pn-droplets-page/my-microting-pn-droplets-page.component';
-import { MyMicrotingPnDropletsService, MyMicrotingPnSettingsService } from './services';
+import { MyMicrotingPnDropletsService, MyMicrotingPnSettingsService, MyMicrotingPnOrganizationsService } from './services';
 import { MyMicrotingPnSettingsComponent } from './components/my-microting-pn-settings/my-microting-pn-settings.component';
 import { MyMicrotingPnCofirmModalComponent } from './components/shared/my-microting-pn-confirm-modal.component.ts/my-microting-pn-confirm-modal.component';
+import { MyMicrotingPnOrganizationsPageComponent } from './components/organizations/my-microting-pn-organizations-page/my-microting-pn-organizations-page.component';
+import { MyMicrotingPnOrganizationsNewComponent } from './components/organizations/my-microting-pn-organizations-new/my-microting-pn-organizations-new.component';
 
 @NgModule({
     imports: [
@@ -34,10 +36,13 @@ import { MyMicrotingPnCofirmModalComponent } from './components/shared/my-microt
     MyMicrotingLayoutComponent,
     MyMicrotingPnDropletsPageComponent,
     MyMicrotingPnSettingsComponent,
-    MyMicrotingPnCofirmModalComponent
+    MyMicrotingPnCofirmModalComponent,
+    MyMicrotingPnOrganizationsPageComponent,
+    MyMicrotingPnOrganizationsNewComponent
   ],
   providers: [
     MyMicrotingPnDropletsService,
+    MyMicrotingPnOrganizationsService,
     MyMicrotingPnSettingsService
   ]
 })

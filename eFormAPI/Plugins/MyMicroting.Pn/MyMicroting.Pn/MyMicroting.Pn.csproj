@@ -17,9 +17,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microting.DigitalOceanBase" Version="1.0.5" />
-    <PackageReference Include="Microting.eForm" Version="4.0.4-beta" />
-    <PackageReference Include="Microting.eFormApi.BasePn" Version="2.0.2-beta" />
+    <PackageReference Include="Microting.DigitalOceanBase" Version="1.0.7" />
+    <PackageReference Include="Microting.eForm" Version="4.0.6" />
+    <PackageReference Include="Microting.eFormApi.BasePn" Version="2.0.5" />
+    <PackageReference Include="Microting.eFormBaseCustomerBase" Version="2.0.6" />
+    <PackageReference Include="Microting.MyMicrotingBase" Version="1.0.0" />
   </ItemGroup>
+
+  <!--<ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\digital-ocean-base\Microting.DigitalOceanBase\Microting.DigitalOceanBase.csproj" />
+  </ItemGroup>-->
 
 </Project>

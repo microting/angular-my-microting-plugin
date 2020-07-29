@@ -26,7 +26,7 @@ export class MyMicrotingPnDropletsPageComponent implements OnInit {
 
   getLocalPageSettings() {
     this.localPageSettings = this.sharedPnService.getLocalPageSettings
-      ('myMicrontingPnSettings').settings;
+      ('myMicrontingPnDropletsSettings').settings;
     this.getDroplets();
   }
 
@@ -90,7 +90,7 @@ export class MyMicrotingPnDropletsPageComponent implements OnInit {
 
   updateLocalPageSettings() {
     this.sharedPnService.updateLocalPageSettings
-    ('myMicrontingPnSettings', this.localPageSettings);
+    ('myMicrontingPnDropletsSettings', this.localPageSettings);
     this.getDroplets();
   }
 

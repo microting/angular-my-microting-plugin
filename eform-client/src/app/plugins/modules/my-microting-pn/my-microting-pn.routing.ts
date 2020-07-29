@@ -6,6 +6,7 @@ import {MyMicrotingLayoutComponent} from './layouts';
 import {MyMicrotingPnDropletsPageComponent} from './components/droplets/my-microting-pn-droplets-page/my-microting-pn-droplets-page.component';
 import {MyMicrotingPnClaims} from './enums';
 import { MyMicrotingPnSettingsComponent } from './components/my-microting-pn-settings/my-microting-pn-settings.component';
+import { MyMicrotingPnOrganizationsPageComponent } from './components/organizations/my-microting-pn-organizations-page/my-microting-pn-organizations-page.component';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,11 @@ export const routes: Routes = [
         path: 'settings',
        // canActivate: [AdminGuard],
         component: MyMicrotingPnSettingsComponent
+      },
+      {
+        path: 'organizations',
+       // canActivate: [AdminGuard],
+        component: MyMicrotingPnOrganizationsPageComponent
       },
     ]
   }
