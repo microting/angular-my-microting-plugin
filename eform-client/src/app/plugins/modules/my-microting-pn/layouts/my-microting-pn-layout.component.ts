@@ -16,7 +16,8 @@ export class MyMicrotingLayoutComponent implements AfterViewInit, OnInit {
   ) {}
 
   ngOnInit() {
-    this.sharedPnService.initLocalPageSettings('myMicrontingPnSettings', MyMicrotingPnLocalSettings);
+    this.sharedPnService.initLocalPageSettings('myMicrontingPnDropletsSettings', MyMicrotingPnLocalSettings);
+    this.sharedPnService.initLocalPageSettings('myMicrontingPnOrgsSettings', MyMicrotingPnLocalSettings);
   }
 
   ngAfterViewInit() {

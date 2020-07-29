@@ -3,7 +3,7 @@ using Microting.eFormApi.BasePn.Infrastructure.Database.Entities;
 
 namespace MyMicroting.Pn.Infrastructure.Data.Seed.Data
 {
-    public class MyMicrotingConfigurationSeedData : IPluginConfigurationSeedData
+    public class MyMicrotingDropletsConfigurationSeedData : IPluginConfigurationSeedData
     {
         public PluginConfigurationValue[] Data => new[]
         {

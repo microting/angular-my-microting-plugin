@@ -8,9 +8,10 @@
  "Local IPv4":"Local IPv4",
  "Public IPv4":"Public IPv4",
  "IPv6":"IPv6",
- "Upgrade":"Upgrade",
- "Trigger":"Trigger",
- "Backup":"Backup",
- "Destroy":"Destroy",
+ "tags":"tags",
+ "Upgrade":"upgrade",
+ "Trigger":"trigger",
+ "Backup":"backup",
+ "Destroy":"destroy",
  "My microting plugin settings": "My microting plugin settings"
 }

@@ -1,0 +1,139 @@
+<div mdbModal class="modal fade top" #frame="mdbModal" >
+  <div class="modal-dialog modal-fluid modal-full-height modal-top">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>{{'Create new organization' | translate}}</h3>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm">
+            <label for="name">{{'Name' | translate}}</label>
+            <input mdbInput
+                   type="text" [(ngModel)]="model.Name"
+                   class="form-control input-sm" id="name">
+          </div>
+          <div class="col-sm">
+            <label for="address">{{'Address' | translate}}</label>
+            <input mdbInput
+                   type="text" [(ngModel)]="model.Address"
+                   class="form-control input-sm" id="address">
+          </div>
+          <div class="col-sm">
+            <label for="zip">{{'Zip' | translate}}</label>
+            <input mdbInput
+                  type="text" [(ngModel)]="model.Zip"
+                  class="form-control input-sm" id="zip">
+          </div>
+          <div class="col-sm">
+            <label for="city">{{'City' | translate}}</label>
+            <input mdbInput
+                   type="text" [(ngModel)]="model.City"
+                   class="form-control input-sm" id="city">
+          </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-sm">
+            <label for="vat">{{'Vat nr' | translate}}</label>
+            <input mdbInput
+                   type="text" [(ngModel)]="model.VatNr"
+                   class="form-control input-sm" id="vat">
+          </div>
+          <div class="col-sm">
+            <label for="ean">{{'Ean no' | translate}}</label>
+            <input mdbInput
+                   type="text" [(ngModel)]="model.EanNo"
+                   class="form-control input-sm" id="ean">
+          </div>
+          <div class="col-sm">
+            <label for="phone">{{'Phone' | translate}}</label>
+            <input mdbInput
+                   type="text" [(ngModel)]="model.Phone"
+                   class="form-control input-sm" id="phone">
+          </div>
+          <div class="col-sm">
+            <label for="email">{{'e-mail' | translate}}</label>
+            <input mdbInput
+                   type="text" [(ngModel)]="model.Email"
+                   class="form-control input-sm" id="email">
+          </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-sm">
+            <label for="poc">{{'Contact Person' | translate}}</label>
+            <input mdbInput
+                   type="text" [(ngModel)]="model.ContactPerson"
+                   class="form-control input-sm" id="poc">
+          </div>
+          <div class="col-sm">
+            <label for="licenceNo">{{'Number of Licences' | translate}}</label>
+            <input mdbInput
+                   type="text" [(ngModel)]="model.LicencesCount"
+                   class="form-control input-sm" id="licenceNo">
+          </div>
+          <div class="col-sm">
+            <label for="domain">{{'Domain name' | translate}}</label>
+            <input mdbInput
+                   type="text" [(ngModel)]="model.DomainName"
+                   class="form-control input-sm" id="domail">
+          </div>
+          <div class="col-sm"></div>
+        </div>
+      </div>
+
+      <mdb-card>
+        <mdb-card-header>
+          {{'Plugins' | translate}}
+        </mdb-card-header>
+        <mdb-card-body>
+          <div class="row p-1 table-responsive no-gutters">
+            <table mdbTable striped="true" hover="true" small="true" class="z-depth-1 text-center">
+              <thead>
+              <tr>
+                <th>
+                  <div class="d-flex align-items-center justify-content-center">
+                    {{ 'Name' | translate }}
+                  </div>
+                </th>
+                <th>
+                  <div class="d-flex align-items-center justify-content-center">
+                    {{ 'Version' | translate }}
+                  </div>
+                </th>
+                <th>
+                  <div class="d-flex align-items-center justify-content-center">
+                    {{ 'Select' | translate }}
+                  </div>
+                </th>
+              </tr>
+              </thead>
+              <tbody id="mainTableBody">
+                <tr *ngFor="let plugin of model.Plugins; let i = index">
+                  <td>
+                    {{plugin.Name}}
+                  </td>
+                  <td>
+                    {{plugin.Version}}
+                  </td>
+                  <td>
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" [(ngModel)]="plugin.Enabled">
+                      <label class="custom-control-label" for="defaultUnchecked"></label>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </mdb-card-body>
+      </mdb-card>
+
+      <div class="modal-footer">
+        <button mdbBtn class="btn-success btn-small-height">{{'Save' | translate}}</button>
+        <button mdbBtn class="btn-accent text-black-50 btn-small-height"  (click)="frame.hide()">{{'Cancel' | translate}}</button>
+      </div>
+    </div>
+  </div>
+</div>
