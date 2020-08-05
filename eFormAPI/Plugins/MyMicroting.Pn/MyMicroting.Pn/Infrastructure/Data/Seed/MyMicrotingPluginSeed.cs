@@ -4,16 +4,15 @@ using Microting.eForm.Infrastructure.Constants;
 using System;
 using System.Linq;
 using MyMicroting.Pn.Infrastructure.Data.Seed.Data;
+using Microting.eFormApi.BasePn.Abstractions;
 
 namespace MyMicroting.Pn.Infrastructure.Data.Seed
 {
     public class MyMicrotingPluginSeed
     {
-        public static void SeedData(DigitalOceanDbContext dbContext)
+        public static void SeedData(IPluginDbContext dbContext, IPluginConfigurationSeedData data)
         {
-            var seedData = new MyMicrotingConfigurationSeedData();
-            var configurationList = seedData.Data;
-            foreach (var configurationItem in configurationList)
+            foreach (var configurationItem in data.Data)
             {
                 if (!dbContext.PluginConfigurationValues.Any(x => x.Name == configurationItem.Name))
                 {
@@ -45,6 +44,27 @@ namespace MyMicroting.Pn.Infrastructure.Data.Seed
             //    }
             //    );
             //dbContext.PluginPermissions.AddRange(newPermissions);
+
+            dbContext.SaveChanges();
+        }
+
+        public static void SeedPermissions(IPluginDbContext dbContext, IPluginPermissionsSeedData data)
+        {
+
+            // Seed plugin permissions
+            var newPermissions = data.Data
+                .Where(p => dbContext.PluginPermissions.All(x => x.ClaimName != p.ClaimName))
+                .Select(p => new PluginPermission
+                {
+                    PermissionName = p.PermissionName,
+                    ClaimName = p.ClaimName,
+                    CreatedAt = DateTime.UtcNow,
+                    Version = 1,
+                    WorkflowState = Constants.WorkflowStates.Created,
+                    CreatedByUserId = 1
+                }
+                );
+            dbContext.PluginPermissions.AddRange(newPermissions);
 
             dbContext.SaveChanges();
         }

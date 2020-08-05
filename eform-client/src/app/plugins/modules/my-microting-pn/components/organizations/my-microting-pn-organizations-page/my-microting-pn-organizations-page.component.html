@@ -1,0 +1,182 @@
+<subheader-pn [title]="'Organizations' | translate">
+  <div class="p-3">
+    <button mdbBtn class="btn-success btn-small-height mb-2"
+      mdbTooltip="{{ 'Create' | translate }}"
+      (click)="showCreateNewModal()"
+      >{{ 'Create' | translate }}
+    </button>
+  </div>
+</subheader-pn>
+
+<div class="container-fluid">
+  <div class="row pl-1">
+    <div class="col-md-2">
+      <div class="md-form">
+        <input mdbInput
+               type="text" (input)="onSearchInputChanged($event.target.value)"
+               class="form-control input-sm" id="searchInput">
+        <label for="searchInput">{{'Search' | translate}}</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row p-1 table-responsive no-gutters">
+    <table mdbTable striped="true" hover="true" small="true" class="z-depth-1 text-center">
+      <thead>
+      <tr>
+        <th (click)="sortTable('Id', orgsRequestModel.isSortDsc = !orgsRequestModel.isSortDsc)">
+          <div class="d-flex align-items-center justify-content-center">
+            {{ 'Id' | translate }}
+            <i class="material-icons text-black-50" *ngIf="localPageSettings.sort != 'Id'">unfold_more</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'Id' && !orgsRequestModel.isSortDsc">expand_less</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'Id' && orgsRequestModel.isSortDsc">expand_more</i>
+          </div>
+        </th>
+        <th (click)="sortTable('CustomerNo', orgsRequestModel.isSortDsc = !orgsRequestModel.isSortDsc)">
+          <div class="d-flex align-items-center justify-content-center">
+            {{ 'Cusotmer No' | translate }}
+            <i class="material-icons text-black-50" *ngIf="localPageSettings.sort != 'CustomerNo'">unfold_more</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'CustomerNo' && !orgsRequestModel.isSortDsc">expand_less</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'CustomerNo' && orgsRequestModel.isSortDsc">expand_more</i>
+          </div>
+        </th>
+        <th (click)="sortTable('Name', orgsRequestModel.isSortDsc = !orgsRequestModel.isSortDsc)">
+          <div class="d-flex align-items-center justify-content-center">
+            {{ 'Name' | translate }}
+            <i class="material-icons text-black-50" *ngIf="localPageSettings.sort != 'Name'">unfold_more</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'Name' && !orgsRequestModel.isSortDsc">expand_less</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'Name' && orgsRequestModel.isSortDsc">expand_more</i>
+          </div>
+        </th>
+        <th (click)="sortTable('NumberOfLicences', orgsRequestModel.isSortDsc = !orgsRequestModel.isSortDsc)">
+          <div class="d-flex align-items-center justify-content-center">
+            {{ 'Number of licences' | translate }}
+            <i class="material-icons text-black-50" *ngIf="localPageSettings.sort != 'NumberOfLicences'">unfold_more</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'NumberOfLicences' && !orgsRequestModel.isSortDsc">expand_less</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'NumberOfLicences' && orgsRequestModel.isSortDsc">expand_more</i>
+          </div>
+        </th>
+        <th (click)="sortTable('PaymentStatus', orgsRequestModel.isSortDsc = !orgsRequestModel.isSortDsc)">
+          <div class="d-flex align-items-center justify-content-center">
+            {{ 'Payment status' | translate }}
+            <i class="material-icons text-black-50" *ngIf="localPageSettings.sort != 'PaymentStatus'">unfold_more</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'PaymentStatus' && !orgsRequestModel.isSortDsc">expand_less</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'PaymentStatus' && orgsRequestModel.isSortDsc">expand_more</i>
+          </div>
+        </th>
+        <th (click)="sortTable('UpToDateStatus', orgsRequestModel.isSortDsc = !orgsRequestModel.isSortDsc)">
+          <div class="d-flex align-items-center justify-content-center">
+            {{ 'Up to date' | translate }}
+            <i class="material-icons text-black-50" *ngIf="localPageSettings.sort != 'UpToDate'">unfold_more</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'UpToDate' && !orgsRequestModel.isSortDsc">expand_less</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'UpToDate' && orgsRequestModel.isSortDsc">expand_more</i>
+          </div>
+        </th>
+        <th (click)="sortTable('NextUpgrade', orgsRequestModel.isSortDsc = !orgsRequestModel.isSortDsc)">
+          <div class="d-flex align-items-center justify-content-center">
+            {{ 'Next upgrade' | translate }}
+            <i class="material-icons text-black-50" *ngIf="localPageSettings.sort != 'NextUpgrade'">unfold_more</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'NextUpgrade' && !orgsRequestModel.isSortDsc">expand_less</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'NextUpgrade' && orgsRequestModel.isSortDsc">expand_more</i>
+          </div>
+        </th>
+        <th (click)="sortTable('SiteName', orgsRequestModel.isSortDsc = !orgsRequestModel.isSortDsc)">
+          <div class="d-flex align-items-center justify-content-center">
+            {{ 'Site name' | translate }}
+            <i class="material-icons text-black-50" *ngIf="localPageSettings.sort != 'SiteName'">unfold_more</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'SiteName' && !orgsRequestModel.isSortDsc">expand_less</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'SiteName' && orgsRequestModel.isSortDsc">expand_more</i>
+          </div>
+        </th>
+        <th (click)="sortTable('Status', orgsRequestModel.isSortDsc = !orgsRequestModel.isSortDsc)">
+          <div class="d-flex align-items-center justify-content-center">
+            {{ 'Status' | translate }}
+            <i class="material-icons text-black-50" *ngIf="localPageSettings.sort != 'Status'">unfold_more</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'Status' && !orgsRequestModel.isSortDsc">expand_less</i>
+            <i class="material-icons"
+               *ngIf="localPageSettings.sort == 'Status' && orgsRequestModel.isSortDsc">expand_more</i>
+          </div>
+        </th>
+        <th scope="col">
+          {{ 'Actions' | translate }}
+        </th>
+      </tr>
+      </thead>
+      <tbody id="mainTableBody">
+      <tr *ngFor="let org of orgsModel.organizations; let i = index">
+        <td>
+          {{org.Id}}
+        </td>
+        <td>
+          {{org.CustomerId}}
+        </td>
+        <td>
+          {{org.CustomeName}}
+        </td>
+        <td>
+          {{org.NumberOfLicenses}}
+        </td>
+        <td>
+          {{org.PaymentStatus}}
+        </td>
+        <td>
+          {{org.UpToDateStatus}}
+        </td>
+        <td>
+          {{org.NextUpgrade | date: 'dd/MM/yyyy'}}
+        </td>
+        <td>
+          {{org.DomainName}}
+        </td>
+        <td>
+          {{org.Status}}
+        </td>
+        <td class="actions">
+            <a href="#">{{ 'view' | translate }}</a>
+            <a href="#">{{ 'edit' | translate }}</a>
+            <a href="#">{{ 'delete' | translate }}</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row justify-content-between mr-2 ml-2">
+    <div class="col-md-1">
+      <page-size-pn
+        [pageSize]="localPageSettings.pageSize"
+        (onPageSizeChanged)="localPageSettings.pageSize = $event; orgsRequestModel.pageIndex = 1;
+        updateLocalPageSettings()">
+      </page-size-pn>
+    </div>
+    <div class="col-md-4 ml-auto d-flex justify-content-end p-2">
+      <pagination-pn *ngIf="orgsModel.total > orgsRequestModel.pageSize"
+                     [limit]="orgsRequestModel.pageSize"
+                     [size]="orgsModel.total"
+                     [offset]="orgsRequestModel.offset"
+                     (onPageChanged)="changePage($event)"></pagination-pn>
+    </div>
+  </div>
+</div>
+
+<app-my-microting-pn-confirm-modal #modalconfirm></app-my-microting-pn-confirm-modal>
+<app-my-microting-pn-organizations-new #modalnew [model]="newOrg"></app-my-microting-pn-organizations-new>
+
+
