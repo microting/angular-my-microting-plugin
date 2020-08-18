@@ -21,9 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microting.DigitalOceanBase" Version="2.0.0" />
-    <PackageReference Include="Microting.eForm" Version="4.0.11" />
-    <PackageReference Include="Microting.eFormApi.BasePn" Version="2.0.11" />
+    <PackageReference Include="Microting.DigitalOceanBase" Version="2.0.7" />
+    <PackageReference Include="Microting.eForm" Version="4.0.15" />
+    <PackageReference Include="Microting.eFormApi.BasePn" Version="2.0.16" />
     <PackageReference Include="Microting.eFormBaseCustomerBase" Version="2.0.13" />
     <PackageReference Include="Microting.MyMicrotingBase" Version="1.0.7" />
   </ItemGroup>
