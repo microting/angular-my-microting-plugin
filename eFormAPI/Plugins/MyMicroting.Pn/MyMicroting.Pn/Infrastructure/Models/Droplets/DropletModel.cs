@@ -7,6 +7,7 @@ namespace MyMicroting.Pn.Infrastructure.Models.Droplets
     public class DropletModel
     {
         public int Id { get; set; }
+        public string Name { get; set; }
         public int DoUid { get; set; }
         public int CustomerNo { get; set; }
         public string PublicIpV4 { get; set; }
@@ -28,5 +29,30 @@ namespace MyMicroting.Pn.Infrastructure.Models.Droplets
         public int UpdatedByUserId { get; set; }
         public string WorkflowState { get; set; }
         public int Version { get; set; }
+
+        public DropletModel()
+        {
+
+        }
+
+        public DropletModel(Droplet droplet)
+        {
+            Id = droplet.Id;
+            Name = droplet.Name;
+            DoUid = droplet.DoUid;
+            CustomerNo = droplet.CustomerNo;
+            PublicIpV4 = droplet.PublicIpV4;
+            PrivateIpV4 = droplet.PrivateIpV4;
+            PublicIpV6 = droplet.PublicIpV6;
+            CurrentImageName = droplet.CurrentImageName;
+            RequestedImageName = droplet.RequestedImageName;
+            CurrentImageId = droplet.CurrentImageId;
+            RequestedImageId = droplet.RequestedImageId;
+            UserData = droplet.UserData;
+            MonitoringEnabled = droplet.MonitoringEnabled;
+            IpV6Enabled = droplet.IpV6Enabled;
+            BackupsEnabled = droplet.BackupsEnabled;
+            Size = droplet.Size;
+        }
     }
 }

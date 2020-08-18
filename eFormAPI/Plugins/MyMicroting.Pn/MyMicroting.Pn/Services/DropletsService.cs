@@ -75,14 +75,34 @@ namespace MyMicroting.Pn.Services
                         x.DropletTags.Select(t => t.Tag.Name).Any(t => t.Contains(pnRequestModel.Name)));
                 }
 
-                var dropletsResult = await  dropletsQuery.Where(x => x.WorkflowState != Constants.WorkflowStates.Removed)
+                List<Droplet> dropletsResult = await  dropletsQuery.Where(x => x.WorkflowState != Constants.WorkflowStates.Removed)
                     .Skip(pnRequestModel.Offset)
                     .Take(pnRequestModel.PageSize)
                     .ToListAsync();
 
-                List<DropletModel> droplets = mapper.Map<List<DropletModel>>(dropletsResult);
+                List<DropletModel> thelist = new List<DropletModel>();
+
+                // List<DropletModel> droplets = mapper.Map<List<DropletModel>>(dropletsResult);
+                foreach (Droplet droplet in dropletsResult)
+                {
+                    DropletModel dropletModel = new DropletModel(droplet);
+                    dropletModel.Tags = new List<string>();
+                    var tags = await dbContext.DropletTag
+                        .Where(x => x.DropletId == droplet.Id)
+                        .Join(dbContext.Tags,
+                        DropletTag => DropletTag.TagId, tag => tag.Id, ((tag, tag1) => new
+                    {
+                        Id = tag.Id,
+                        Name = tag1.Name
+                    })).ToListAsync();
+                    foreach (var dropletTag in tags)
+                    {
+                        dropletModel.Tags.Add(dropletTag.Name);
+                    }
+                    thelist.Add(dropletModel);
+                }
                 dropletsPnModel.Total = await dbContext.Droplets.CountAsync(x => x.WorkflowState != Constants.WorkflowStates.Removed);
-                dropletsPnModel.Droplets = droplets;
+                dropletsPnModel.Droplets = thelist;
 
                 return new OperationDataResult<DropletsModel>(true, dropletsPnModel);
             }

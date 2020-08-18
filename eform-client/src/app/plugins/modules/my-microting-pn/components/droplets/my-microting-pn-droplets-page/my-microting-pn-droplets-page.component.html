@@ -102,29 +102,29 @@
       <tbody id="mainTableBody">
       <tr *ngFor="let droplet of dropletsModel.droplets; let i = index">
         <td>
-          {{droplet.DoUid}}
+          {{droplet.doUid}}
         </td>
         <td>
-          {{droplet.CustomerNo}}
+          {{droplet.customerNo}}
         </td>
         <td>
-          {{droplet.Name}}
+          {{droplet.name}}
+        </td>
+        <td *ngIf="droplet.tags">
+          {{droplet.tags.join(', ')}}
         </td>
         <td>
-          {{droplet.Tags.join(', ')}}
+          {{droplet.privateIpV4}}
         </td>
         <td>
-          {{droplet.PrivateIpV4}}
+          {{droplet.publicIpV4}}
         </td>
         <td>
-          {{droplet.PublicIpV4}}
-        </td>
-        <td>
-          {{droplet.PublicIpV6}}
+          {{droplet.publicIpV6}}
         </td>
         <td class="actions">
             <a href="#">{{ 'tags' | translate }}</a>
-            <a (click)="showUpgradeDropletModal(droplet.DoUid, droplet.CurrentImageId)" >{{ 'upgrade' | translate }}</a>
+            <a (click)="showUpgradeDropletModal(droplet.doUid, droplet.currentImageId)" >{{ 'upgrade' | translate }}</a>
             <a href="#">{{ 'trigger' | translate }}</a>
             <a href="#">{{ 'backup' | translate }}</a>
             <a href="#">{{ 'destroy' | translate }}</a>
