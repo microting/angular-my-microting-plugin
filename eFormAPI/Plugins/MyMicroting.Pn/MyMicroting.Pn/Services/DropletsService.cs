@@ -12,7 +12,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using AutoMapper;
 using Microting.DigitalOceanBase.Managers;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
@@ -24,17 +23,15 @@ namespace MyMicroting.Pn.Services
         private readonly ILocalizationService localizationService;
         private readonly ILogger<DropletsService> logger;
         private readonly DigitalOceanDbContext dbContext;
-        private readonly IMapper mapper;
         private readonly IDigitalOceanManager digitalOceanManager;
         private readonly IHttpContextAccessor httpContextAccessor;
 
         public DropletsService(ILocalizationService localizationService, ILogger<DropletsService> logger,
-            DigitalOceanDbContext dbContext, IMapper mapper, IDigitalOceanManager digitalOceanManager, IHttpContextAccessor httpContextAccessor)
+            DigitalOceanDbContext dbContext, IDigitalOceanManager digitalOceanManager, IHttpContextAccessor httpContextAccessor)
         {
             this.localizationService = localizationService;
             this.logger = logger;
             this.dbContext = dbContext;
-            this.mapper = mapper;
             this.digitalOceanManager = digitalOceanManager;
             this.httpContextAccessor = httpContextAccessor;
         }

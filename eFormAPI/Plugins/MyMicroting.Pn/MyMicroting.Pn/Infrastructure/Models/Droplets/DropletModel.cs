@@ -39,20 +39,20 @@ namespace MyMicroting.Pn.Infrastructure.Models.Droplets
         {
             Id = droplet.Id;
             Name = droplet.Name;
-            DoUid = droplet.DoUid;
+            //DoUid = droplet.DoUid;
             CustomerNo = droplet.CustomerNo;
             PublicIpV4 = droplet.PublicIpV4;
             PrivateIpV4 = droplet.PrivateIpV4;
             PublicIpV6 = droplet.PublicIpV6;
             CurrentImageName = droplet.CurrentImageName;
             RequestedImageName = droplet.RequestedImageName;
-            CurrentImageId = droplet.CurrentImageId;
-            RequestedImageId = droplet.RequestedImageId;
+            //CurrentImageId = droplet.CurrentImageId;
+            //RequestedImageId = droplet.RequestedImageId;
             UserData = droplet.UserData;
             MonitoringEnabled = droplet.MonitoringEnabled;
             IpV6Enabled = droplet.IpV6Enabled;
             BackupsEnabled = droplet.BackupsEnabled;
-            Size = droplet.Size;
+            //Size = droplet.Size;
         }
     }
 }

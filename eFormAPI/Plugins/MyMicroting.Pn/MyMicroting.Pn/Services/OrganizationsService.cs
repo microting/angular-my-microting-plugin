@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microting.DigitalOceanBase.Infrastructure.Data;
@@ -27,16 +26,14 @@ namespace MyMicroting.Pn.Services
         private readonly IHttpContextAccessor httpContextAccessor;
         private readonly DigitalOceanDbContext doDbContext;
         private readonly CustomersPnDbAnySql customersDbContext;
-        private readonly IMapper mapper;
 
         public OrganizationsService(ILocalizationService localizationService, ILogger<OrganizationsService> logger,
             DigitalOceanDbContext doDbContext, MyMicrotingDbContext myMicrotingDbContext, CustomersPnDbAnySql customersDbContext,
-            IHttpContextAccessor httpContextAccessor, IMapper mapper)
+            IHttpContextAccessor httpContextAccessor)
         {
             this.localizationService = localizationService;
             this.doDbContext = doDbContext;
             this.customersDbContext = customersDbContext;
-            this.mapper = mapper;
             this.myMicrotingDbContext = myMicrotingDbContext;
             this.httpContextAccessor = httpContextAccessor;
             this.logger = logger;
@@ -91,9 +88,10 @@ namespace MyMicroting.Pn.Services
                     .Take(requestModel.PageSize)
                     .ToListAsync();
 
-                List<OrganizationModel> organizations = mapper.Map<List<OrganizationModel>>(organizationsResult);
+                //List<OrganizationModel> organizations = mapper.Map<List<OrganizationModel>>(organizationsResult);
                 organizationsPnModel.Total = await myMicrotingDbContext.Organizations.CountAsync(x => x.WorkflowState != Constants.WorkflowStates.Removed);
-                organizationsPnModel.Organizations = organizations;
+                //organizationsPnModel.Organizations = organizations;
+                organizationsPnModel.Organizations = new List<OrganizationModel>();
 
                 return new OperationDataResult<OrganizationsModel>(true, organizationsPnModel);
             }
