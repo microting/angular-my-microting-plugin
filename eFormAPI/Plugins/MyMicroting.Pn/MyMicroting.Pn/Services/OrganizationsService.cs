@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using MyMicroting.Pn.Infrastructure.Helpers;
 
 namespace MyMicroting.Pn.Services
 {
@@ -102,6 +103,19 @@ namespace MyMicroting.Pn.Services
                 return new OperationDataResult<OrganizationsModel>(false,
                     localizationService.GetString("ErrorObtainingOrganizationsInfo") + e.Message);
             }
+        }
+
+        public async Task<OperationDataResult<OrganizationsModel>> Fetch(OrganizationsRequestModel pnRequestModel)
+        {
+            var cred = doDbContext.PluginConfigurationValues?.FirstOrDefault(t => t.Name == "MyMicrotingSettings:ApiToken");
+
+            if (cred == null)
+                throw new NullReferenceException("DigitalOcean token is not found");
+
+            string token = cred.Value;
+            await OrganizationHelper.FetchFromApi(token);
+
+            return new OperationDataResult<OrganizationsModel>(true);
         }
     }
 }

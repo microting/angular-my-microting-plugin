@@ -1,7 +1,9 @@
 export class MyMicrotingPnSettingsModel {
   digitalOceanToken: string;
+  apiToken: string;
 
-  constructor(){
+  constructor() {
     this.digitalOceanToken = '';
+    this.apiToken = '';
   }
 }

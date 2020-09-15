@@ -24,6 +24,13 @@ namespace MyMicroting.Pn.Controllers
             return await organizationsService.Index(requestModel);
         }
 
+        [HttpGet]
+        [Route("fetch")]
+        public async Task<OperationDataResult<OrganizationsModel>> Fetch(int id, OrganizationsRequestModel requestModel)
+        {
+            return await organizationsService.Fetch(requestModel);
+        }
+
         //[HttpPost]
         //[Route("create")]
         //public async Task<OperationDataResult<DropletsModel>> Create(int id, DropletsRequestModel requestModel)

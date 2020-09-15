@@ -7,5 +7,7 @@ namespace MyMicroting.Pn.Abstractions
     public interface IOrganizationsService
     {
         Task<OperationDataResult<OrganizationsModel>> Index(OrganizationsRequestModel requestModel);
+        Task<OperationDataResult<OrganizationsModel>> Fetch(OrganizationsRequestModel pnRequestModel);
+
     }
 }

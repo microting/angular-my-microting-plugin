@@ -40,6 +40,7 @@ namespace MyMicroting.Pn.Services
                     return new OperationDataResult<MyMicrotingSettings>(false, localizationService.GetString("DoTokenMissing"));
 
                 result.DigitalOceanToken = pliginSettings.DigitalOceanToken;
+                result.ApiToken = pliginSettings.ApiToken;
                 return new OperationDataResult<MyMicrotingSettings>(true, result);
 
             }
@@ -57,7 +58,11 @@ namespace MyMicroting.Pn.Services
             try
             {
                 await options.UpdateDb(
-                    x => { x.DigitalOceanToken = settingsUpdateModel.DigitalOceanToken; },
+                    x =>
+                    {
+                        x.DigitalOceanToken = settingsUpdateModel.DigitalOceanToken;
+                        x.ApiToken = settingsUpdateModel.ApiToken;
+                    },
                     dbContext,
                     UserId);
 

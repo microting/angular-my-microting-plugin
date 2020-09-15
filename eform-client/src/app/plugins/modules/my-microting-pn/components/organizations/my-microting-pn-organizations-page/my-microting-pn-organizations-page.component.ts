@@ -16,7 +16,7 @@ export class MyMicrotingPnOrganizationsPageComponent implements OnInit {
   orgsRequestModel: MyMicrotingPnOrganizationsRequestModel = new MyMicrotingPnOrganizationsRequestModel();
   localPageSettings: PageSettingsModel = new PageSettingsModel();
   orgsModel: MyMicrotingPnOrganizationsModel = new MyMicrotingPnOrganizationsModel();
-  newOrg: MyMicrotingPnNewOrganizationModel = new MyMicrotingPnNewOrganizationModel(); 
+  newOrg: MyMicrotingPnNewOrganizationModel = new MyMicrotingPnNewOrganizationModel();
   constructor(private sharedPnService: SharedPnService,
     private orgsService: MyMicrotingPnOrganizationsService,
 ) { }
@@ -38,23 +38,6 @@ export class MyMicrotingPnOrganizationsPageComponent implements OnInit {
     this.orgsService.getOrganizations(this.orgsRequestModel).subscribe((data) => {
       if (data && data.success) {
         this.orgsModel = data.model;
-
-        this.orgsModel = new MyMicrotingPnOrganizationsModel();
-        this.orgsModel.total = 100;
-        var orgs = new Array<MyMicrotingPnOrganizationModel>()
-        orgs[0] = new MyMicrotingPnOrganizationModel();
-        orgs[0].Id = 1;
-        orgs[0].CustomerId = 2;
-        orgs[0].DomainName = 'test.com';
-        orgs[0].ServiceEmail = 'test@test.com';
-        orgs[0].NumberOfLicenses = 3
-        orgs[0].NumberOfLicensesUsed = 4;
-        orgs[0].UpToDateStatus = 'UpToDateStatus';
-        orgs[0].NextUpgrade = new Date();
-        orgs[0].InstanceStatus = 'ddddd';
-        orgs[0].InstanceId = 5;
-
-        this.orgsModel.organizations = orgs;
       }
     });
   }
@@ -62,6 +45,16 @@ export class MyMicrotingPnOrganizationsPageComponent implements OnInit {
   showCreateNewModal(){
     this.modalNew.show(() => {
       this.orgsService.getOrganizations(this.orgsRequestModel).subscribe((data) => {
+        if (data && data.success) {
+          this.orgsModel = data.model;
+        }
+      });
+    });
+  }
+
+  showFetchModal(){
+    this.modalConfirm.show('Are you sure you want to fetch all droplets information from Digital Ocean', () => {
+      this.orgsService.fetchOrganizationsFromApi(this.orgsRequestModel).subscribe((data) => {
         if (data && data.success) {
           this.orgsModel = data.model;
         }

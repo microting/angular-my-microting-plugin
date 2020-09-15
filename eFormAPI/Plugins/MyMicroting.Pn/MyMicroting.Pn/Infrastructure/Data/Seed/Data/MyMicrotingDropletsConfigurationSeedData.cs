@@ -12,6 +12,11 @@ namespace MyMicroting.Pn.Infrastructure.Data.Seed.Data
                 Name = "MyMicrotingSettings:DigitalOceanToken",
                 Value = ""
             },
+            new PluginConfigurationValue()
+            {
+                Name = "MyMicrotingSettings:ApiToken",
+                Value = ""
+            },
         };
     }
 }
