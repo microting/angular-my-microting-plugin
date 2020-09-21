@@ -44,6 +44,7 @@ namespace MyMicroting.Pn
             services.AddTransient<IDropletsService, DropletsService>();
             services.AddTransient<IOrganizationsService, OrganizationsService>();
             services.AddTransient<IMyMicrotingSettingsService, MyMicrotingSettingsService>();
+            services.AddTransient<IImagesService, ImagesService>();
 
             services.AddDigitalOceanBaseServices();
         }
@@ -139,46 +140,46 @@ namespace MyMicroting.Pn
             using (CustomersPnDbAnySql context = customersPnContextFactory.CreateDbContext(new[] { customersConnectionString }))
             {
                 // Add data
-                List<string>
-                    customerFields =
-                        new Customer().GetPropList(); //Find all attributes for cusomers and puts them in a list
-                customerFields.Remove(nameof(Customer
-                    .RelatedEntityId)); // removes the related entity, because it's not relevant for fields
-                foreach (string name in customerFields)
-                {
-                    if (!context.Fields.Any(x => x.Name == name))
-                    {
-                        Field newField = new Field
-                        {
-                            Name = name
-                        };
-                        newField.Create(context);
-                    }
-                }
-
-                context.SaveChanges();
-                Field fieldForRemove = context.Fields.FirstOrDefault(x => x.Name == nameof(Customer.RelatedEntityId));
-                if (fieldForRemove != null)
-                {
-                    context.Fields.Remove(fieldForRemove);
-                    context.SaveChanges();
-                }
-
-                List<Field> fields = context.Fields.ToList();
-                foreach (Field field in fields)
-                {
-                    CustomerField customerField = new CustomerField
-                    {
-                        FieldId = field.Id,
-                        FieldStatus = 1
-                    };
-                    if (!context.CustomerFields.Any(x => x.FieldId == field.Id))
-                    {
-                        context.CustomerFields.Add(customerField);
-                    }
-                }
-
-                context.SaveChanges();
+                // List<string>
+                //     customerFields =
+                //         new Customer().GetPropList(); //Find all attributes for cusomers and puts them in a list
+                // customerFields.Remove(nameof(Customer
+                //     .RelatedEntityId)); // removes the related entity, because it's not relevant for fields
+                // foreach (string name in customerFields)
+                // {
+                //     if (!context.Fields.Any(x => x.Name == name))
+                //     {
+                //         Field newField = new Field
+                //         {
+                //             Name = name
+                //         };
+                //         newField.Create(context);
+                //     }
+                // }
+                //
+                // context.SaveChanges();
+                // Field fieldForRemove = context.Fields.FirstOrDefault(x => x.Name == nameof(Customer.RelatedEntityId));
+                // if (fieldForRemove != null)
+                // {
+                //     context.Fields.Remove(fieldForRemove);
+                //     context.SaveChanges();
+                // }
+                //
+                // List<Field> fields = context.Fields.ToList();
+                // foreach (Field field in fields)
+                // {
+                //     CustomerField customerField = new CustomerField
+                //     {
+                //         FieldId = field.Id,
+                //         FieldStatus = 1
+                //     };
+                //     if (!context.CustomerFields.Any(x => x.FieldId == field.Id))
+                //     {
+                //         context.CustomerFields.Add(customerField);
+                //     }
+                // }
+                //
+                // context.SaveChanges();
 
                 // Seed configuration
                 MyMicrotingPluginSeed.SeedData(context, new MyMicrotingCustomersConfigurationSeedData());

@@ -8,7 +8,7 @@ namespace MyMicroting.Pn.Infrastructure.Models.Droplets
     {
         public int Id { get; set; }
         public int DoUid { get; set; }
-        public int CustomerNo { get; set; }
+        public string CustomerNo { get; set; }
         public string PublicIpV4 { get; set; }
         public string PrivateIpV4 { get; set; }
         public string PublicIpV6 { get; set; }
@@ -28,5 +28,14 @@ namespace MyMicroting.Pn.Infrastructure.Models.Droplets
         public int UpdatedByUserId { get; set; }
         public string WorkflowState { get; set; }
         public int Version { get; set; }
+        public int MicrotingId { get; set; }
+        public bool PaymentOverdue { get; set; }
+        public string PaymentStatus { get; set; }
+        public int UnitLicenseNumber { get; set; }
+        public string Token { get; set; }
+        public DateTime TokenExpires { get; set; }
+        public string Name { get; set; }
+        public string DomainName { get; set; }
+        public string Status { get; set; }
     }
 }

@@ -17,6 +17,16 @@ namespace MyMicroting.Pn.Infrastructure.Data.Seed.Data
                 Name = "MyMicrotingSettings:ApiToken",
                 Value = ""
             },
+            new PluginConfigurationValue()
+            {
+                Name = "MyMicrotingSettings:ImageId",
+                Value = ""
+            },
+            new PluginConfigurationValue()
+            {
+                Name = "MyMicrotingSettings:ImageName",
+                Value = ""
+            },
         };
     }
 }

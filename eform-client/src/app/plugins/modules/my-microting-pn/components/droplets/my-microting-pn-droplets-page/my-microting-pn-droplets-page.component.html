@@ -123,11 +123,25 @@
           {{droplet.publicIpV6}}
         </td>
         <td class="actions">
-            <a href="#">{{ 'tags' | translate }}</a>
-            <a (click)="showUpgradeDropletModal(droplet.doUid, droplet.currentImageId)" >{{ 'upgrade' | translate }}</a>
-            <a href="#">{{ 'trigger' | translate }}</a>
-            <a href="#">{{ 'backup' | translate }}</a>
-            <a href="#">{{ 'destroy' | translate }}</a>
+          <button mdbBtn class="btn-accent text-black-50 btn-icon mb-2 " id="dashboardViewBtn"
+                  mdbTooltip="{{'Tags' | translate}}" mdbWavesEffect>
+            <fa-icon icon="tags" [fixedWidth]="true" size="lg"></fa-icon>
+          </button>
+          <button mdbBtn class="btn-accent text-black-50 btn-icon mb-2 " id="showUpgradeDropletModal"
+                  mdbTooltip="{{'Upgrade' | translate}}" mdbWavesEffect
+                  (click)="showUpgradeDropletModal(droplet.doUid, droplet.currentImageId)">
+            <fa-icon icon="cloud-upload-alt" [fixedWidth]="true" size="lg"></fa-icon>
+          </button>
+          <button mdbBtn class="btn-accent text-black-50 btn-icon mb-2 " id="showBackupDropletModal"
+                  mdbTooltip="{{'Trigger backup' | translate}}" mdbWavesEffect
+                  (click)="showUpgradeDropletModal(droplet.doUid, droplet.currentImageId)">
+            <fa-icon icon="boxes" [fixedWidth]="true" size="lg"></fa-icon>
+          </button>
+          <button mdbBtn class="btn-danger btn-icon mb-2" id="showDeleteDropletModal"
+                  mdbTooltip="{{'Destroy' | translate}}" mdbWavesEffect
+                  (click)="showUpgradeDropletModal(droplet.doUid, droplet.currentImageId)">
+            <fa-icon icon="trash" [fixedWidth]="true" size="lg"></fa-icon>
+          </button>
         </td>
       </tr>
       </tbody>

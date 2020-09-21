@@ -1,4 +1,4 @@
-import { MyMicrotingPnDropletModel } from ".";
+import { MyMicrotingPnDropletModel } from '.';
 
 export class MyMicrotingPnDropletsModel {
   total: number;

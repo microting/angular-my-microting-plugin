@@ -1,12 +1,16 @@
 export class MyMicrotingPnOrganizationModel {
-  Id: number;
-  CustomerId: number;
-  DomainName: string;
-  ServiceEmail: string;
-  NumberOfLicenses: number;
-  NumberOfLicensesUsed: number;
-  UpToDateStatus: string;
-  NextUpgrade: Date;
-  InstanceStatus: string;
-  InstanceId: number;
+  id: number;
+  customerNo: string;
+  name: string;
+  paymentStatus: string;
+  domainName: string;
+  serviceEmail: string;
+  unitLicenseNumber: number;
+  numberOfLicensesUsed: number;
+  upToDateStatus: string;
+  nextUpgrade: Date;
+  instanceStatus: string;
+  instanceId: number;
+  status: string;
+  workflowState: string;
 }

@@ -10,19 +10,42 @@
   <div class="row mt-4">
     <div class="col-md-12 col-xs-12 control-block">
       <div class="container-fluid">
-        <div class="row mt-2">
-          <div class="col-md-2 mb-2">
+        <div class="row mt-3">
+          <div class="col-md-6 mb-6">
             <div class="md-form">
               <input mdbInput type="text" id="doToken" class="form-control" [(ngModel)]="myMicrotingPnSettingsModel.digitalOceanToken">
               <label for="doToken" >{{'Digital Ocean token '| translate}}</label>
             </div>
           </div>
         </div>
-        <div class="row mt-2">
-          <div class="col-md-2 mb-2">
+        <div class="row mt-6">
+          <div class="col-md-6 mb-6">
             <div class="md-form">
               <input mdbInput type="text" id="apiToken" class="form-control" [(ngModel)]="myMicrotingPnSettingsModel.apiToken">
               <label for="apiToken" >{{'API token '| translate}}</label>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-6">
+          <div class="col-md-6 mb-6">
+            <div class="md-form">
+              <ng-select
+                bindValue="id"
+                bindLabel="name"
+                [placeholder]="('Select current image for stable production' | translate) + ' *'"
+                [ngModel]="myMicrotingPnSettingsModel.imageId"
+                [required]="false"
+                [clearable]="false"
+                (ngModelChange)="updateSelectedImage($event)"
+                [items]="allImages.images"></ng-select>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-6">
+          <div class="col-md-6 mb-6">
+            <div class="md-form">
+              <input mdbInput type="text" id="angularVersion" class="form-control" [(ngModel)]="myMicrotingPnSettingsModel.angularVersion">
+              <label for="apiToken" >{{'Angular version '| translate}}</label>
             </div>
           </div>
         </div>

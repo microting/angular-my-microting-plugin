@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {OperationDataResult} from 'src/app/common/models/operation.models';
 import {BaseService} from 'src/app/common/services/base.service';
-import {MyMicrotingPnDropletsModel, MyMicrotingPnDropletsRequestModel} from '../../models/droplets'
+import {MyMicrotingPnDropletsModel, MyMicrotingPnDropletsRequestModel} from '../../models/droplets';
 
 export let MyMicrotingPnDropletsMethods = {
   getDroplets: 'api/my-microting-pn/droplets'
@@ -27,6 +27,7 @@ export class MyMicrotingPnDropletsService extends BaseService {
     return this.get(MyMicrotingPnDropletsMethods.getDroplets + '/fetch', model);
   }
 
+  // tslint:disable-next-line:max-line-length
   upgrade(dropletId: number, imageId: number, model: MyMicrotingPnDropletsRequestModel): Observable<OperationDataResult<MyMicrotingPnDropletsModel>> {
     return this.get(MyMicrotingPnDropletsMethods.getDroplets + '/upgrade/' + dropletId + '/' + imageId, model);
   }

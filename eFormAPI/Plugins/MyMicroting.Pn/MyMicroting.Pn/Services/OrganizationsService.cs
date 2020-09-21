@@ -89,10 +89,34 @@ namespace MyMicroting.Pn.Services
                     .Take(requestModel.PageSize)
                     .ToListAsync();
 
+                List<OrganizationModel> organizations = new List<OrganizationModel>();
+                foreach (Organization organization in organizationsResult)
+                {
+                    var customer = customersDbContext.Customers.Single(x => x.Id == organization.CustomerId);
+                    var droplet = doDbContext.Droplets.SingleOrDefault(x => x.Id == organization.InstanceId);
+                    string status = "";
+                    if (droplet != null)
+                    {
+                        status = droplet.Status;
+                    }
+                    OrganizationModel organizationModel = new OrganizationModel()
+                    {
+                        CustomerNo = customer.CustomerNo,
+                        Name = customer.CompanyName,
+                        Id = organization.Id,
+                        UnitLicenseNumber = organization.NumberOfLicenses,
+                        PaymentStatus = customer.PaymentStatus,
+                        PaymentOverdue = customer.PaymentOverdue,
+                        DomainName = organization.DomainName,
+                        Status = status
+                    };
+                    organizations.Add(organizationModel);
+                }
+
                 //List<OrganizationModel> organizations = mapper.Map<List<OrganizationModel>>(organizationsResult);
                 organizationsPnModel.Total = await myMicrotingDbContext.Organizations.CountAsync(x => x.WorkflowState != Constants.WorkflowStates.Removed);
-                //organizationsPnModel.Organizations = organizations;
-                organizationsPnModel.Organizations = new List<OrganizationModel>();
+                organizationsPnModel.Organizations = organizations;
+                //organizationsPnModel.Organizations = new List<OrganizationModel>();
 
                 return new OperationDataResult<OrganizationsModel>(true, organizationsPnModel);
             }
@@ -113,7 +137,7 @@ namespace MyMicroting.Pn.Services
                 throw new NullReferenceException("DigitalOcean token is not found");
 
             string token = cred.Value;
-            await OrganizationHelper.FetchFromApi(token);
+            await OrganizationHelper.FetchFromApi(token, myMicrotingDbContext, customersDbContext, doDbContext);
 
             return new OperationDataResult<OrganizationsModel>(true);
         }

@@ -29,6 +29,7 @@ namespace MyMicroting.Pn.Infrastructure.Models.Droplets
         public int UpdatedByUserId { get; set; }
         public string WorkflowState { get; set; }
         public int Version { get; set; }
+        public string Status { get; set; }
 
         public DropletModel()
         {

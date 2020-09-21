@@ -99,14 +99,14 @@
                *ngIf="localPageSettings.sort == 'NextUpgrade' && orgsRequestModel.isSortDsc">expand_more</i>
           </div>
         </th>
-        <th (click)="sortTable('SiteName', orgsRequestModel.isSortDsc = !orgsRequestModel.isSortDsc)">
+        <th (click)="sortTable('DomainName', orgsRequestModel.isSortDsc = !orgsRequestModel.isSortDsc)">
           <div class="d-flex align-items-center justify-content-center">
-            {{ 'Site name' | translate }}
-            <i class="material-icons text-black-50" *ngIf="localPageSettings.sort != 'SiteName'">unfold_more</i>
+            {{ 'Domain name' | translate }}
+            <i class="material-icons text-black-50" *ngIf="localPageSettings.sort != 'DomainName'">unfold_more</i>
             <i class="material-icons"
-               *ngIf="localPageSettings.sort == 'SiteName' && !orgsRequestModel.isSortDsc">expand_less</i>
+               *ngIf="localPageSettings.sort == 'DomainName' && !orgsRequestModel.isSortDsc">expand_less</i>
             <i class="material-icons"
-               *ngIf="localPageSettings.sort == 'SiteName' && orgsRequestModel.isSortDsc">expand_more</i>
+               *ngIf="localPageSettings.sort == 'DomainName' && orgsRequestModel.isSortDsc">expand_more</i>
           </div>
         </th>
         <th (click)="sortTable('Status', orgsRequestModel.isSortDsc = !orgsRequestModel.isSortDsc)">
@@ -127,36 +127,48 @@
       <tbody id="mainTableBody">
       <tr *ngFor="let org of orgsModel.organizations; let i = index">
         <td>
-          {{org.Id}}
+          {{org.id}}
         </td>
         <td>
-          {{org.CustomerId}}
+          {{org.customerNo}}
         </td>
         <td>
-          {{org.CustomeName}}
+          {{org.name}}
         </td>
         <td>
-          {{org.NumberOfLicenses}}
+          {{org.unitLicenseNumber}}
         </td>
         <td>
-          {{org.PaymentStatus}}
+          {{org.paymentStatus}}
+          <fa-icon icon="check" [fixedWidth]="true" size="lg"></fa-icon>
         </td>
         <td>
-          {{org.UpToDateStatus}}
+          {{org.upToDateStatus}}
         </td>
         <td>
-          {{org.NextUpgrade | date: 'dd/MM/yyyy'}}
+          {{org.nextUpgrade | date: 'dd/MM/yyyy'}}
         </td>
         <td>
-          {{org.DomainName}}
+          {{org.domainName}}
         </td>
         <td>
-          {{org.Status}}
+          {{org.status}}
         </td>
         <td class="actions">
-            <a href="#">{{ 'view' | translate }}</a>
-            <a href="#">{{ 'edit' | translate }}</a>
-            <a href="#">{{ 'delete' | translate }}</a>
+          <button mdbBtn class="btn-accent text-black-50 btn-icon mb-2 " id="dashboardViewBtn"
+                  mdbTooltip="{{'View' | translate}}" mdbWavesEffect>
+            <fa-icon icon="eye" [fixedWidth]="true" size="lg"></fa-icon>
+          </button>
+          <button mdbBtn class="btn-accent btn-icon mb-2" id="showDeleteDropletModal"
+                  mdbTooltip="{{'Edit' | translate}}" mdbWavesEffect
+                  (click)="showUpgradeDropletModal(droplet.doUid, droplet.currentImageId)">
+            <fa-icon icon="pen" [fixedWidth]="true" size="lg"></fa-icon>
+          </button>
+          <button mdbBtn class="btn-danger btn-icon mb-2" id="showDeleteDropletModal"
+                  mdbTooltip="{{'Delete' | translate}}" mdbWavesEffect
+                  (click)="showUpgradeDropletModal(droplet.doUid, droplet.currentImageId)">
+            <fa-icon icon="trash" [fixedWidth]="true" size="lg"></fa-icon>
+          </button>
         </td>
       </tr>
       </tbody>

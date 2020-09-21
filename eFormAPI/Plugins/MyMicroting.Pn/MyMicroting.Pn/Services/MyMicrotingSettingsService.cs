@@ -35,12 +35,14 @@ namespace MyMicroting.Pn.Services
             try
             {
                 var result = new MyMicrotingSettings();
-                var pliginSettings = options.Value;
-                if (pliginSettings?.DigitalOceanToken == null)
+                var pluginSettings = options.Value;
+                if (pluginSettings?.DigitalOceanToken == null)
                     return new OperationDataResult<MyMicrotingSettings>(false, localizationService.GetString("DoTokenMissing"));
 
-                result.DigitalOceanToken = pliginSettings.DigitalOceanToken;
-                result.ApiToken = pliginSettings.ApiToken;
+                result.DigitalOceanToken = pluginSettings.DigitalOceanToken;
+                result.ApiToken = pluginSettings.ApiToken;
+                result.ImageId = pluginSettings.ImageId;
+                result.AngularVersion = pluginSettings.AngularVersion;
                 return new OperationDataResult<MyMicrotingSettings>(true, result);
 
             }
@@ -62,6 +64,8 @@ namespace MyMicroting.Pn.Services
                     {
                         x.DigitalOceanToken = settingsUpdateModel.DigitalOceanToken;
                         x.ApiToken = settingsUpdateModel.ApiToken;
+                        x.ImageId = settingsUpdateModel.ImageId;
+                        x.AngularVersion = settingsUpdateModel.AngularVersion;
                     },
                     dbContext,
                     UserId);
